@@ -2,9 +2,16 @@
 
 payapl_lib is a **Lithium plugin**, NOT a Lithium app. This plugin is written to work only with Li3 and is based on code from PayPal PHP SDK code samples.
 
-Steps to install paypal_lib plugin in your existing application
+### Usage
 
-* git submodule in libraries/paypal_lib folder
+* Install paypal_lib plugin in your existing application using git submodule in libraries/paypal_lib folder
+
+
+```
+git submodule add git://github.com/matuag/paypal_lib.git libraries/paypal_lib
+git submodule init
+git submodule update
+```
 
 * add plugin reference to config/bootstrap/libraries.php
 
