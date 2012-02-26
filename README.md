@@ -1,6 +1,6 @@
 # PayPal Plugin for Li3
 
-payapl_lib is a **Lithium plugin**, NOT a Lithium app. This plugin is written to work only with Li3 and is based on code from PayPal PHP SDK code samples.
+payapl_lib is a **Lithium plugin**, NOT a Lithium app. This plugin is written to work only with Li3 and is based on code from PayPal PHP SDK ([PayPal API: Name-Value Pair Interfacecode](https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/library_download_sdks)) samples.
 
 ### Usage
 
@@ -20,9 +20,9 @@ Libraries::add('paypal_lib');
 ```
 
 * by default the configuration files contains PayPal API Signature for making API calls to the PayPal sandbox.
-To override the default configuration create config/bootstrap/paypal.php similar to [paypal_lib/config/bootstrap/paypal.php](https://github.com/matuag/paypal_lib/blob/master/config/bootstrap/paypal.php)
+To override the default configuration create app/config/bootstrap/paypal.php similar to [paypal_lib/config/bootstrap/paypal.php](https://github.com/matuag/paypal_lib/blob/master/config/bootstrap/paypal.php)
 
-* indicate at the top of the class or php file where you want to use the plugin
+* include the plugin in the php file which will use the library
 
 ```php
 use paypal_lib\extensions\net\http\PaypalService;
@@ -39,3 +39,13 @@ $paypalService = new PaypalService();
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'doDirectPayment');
 ```
+
+### Useful links
+
+* [PayPal Sample Code](https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/library_code)
+
+* [PayPal Documentation](https://www.x.com/developers/paypal/documentation-tools)
+
+* [PayPal API Reference](https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/howto_api_reference)
+
+* [PHP Lithium Framework Docs](http://lithify.me/docs)
