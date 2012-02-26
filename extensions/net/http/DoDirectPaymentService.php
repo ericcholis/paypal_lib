@@ -11,33 +11,35 @@
  */
 
 namespace paypal_lib\extensions\net\http;
-/***********************************************************
- DoDirectPaymentReceipt.php
 
- Submits a credit card transaction to PayPal using a
- DoDirectPayment request.
+/* * *********************************************************
+  DoDirectPaymentReceipt.php
 
- The code collects transaction parameters from the form
- displayed by DoDirectPayment.php then constructs and sends
- the DoDirectPayment request string to the PayPal server.
- The paymentType variable becomes the PAYMENTACTION parameter
- of the request string.
+  Submits a credit card transaction to PayPal using a
+  DoDirectPayment request.
 
- After the PayPal server returns the response, the code
- displays the API request and response in the browser.
- If the response from PayPal was a success, it displays the
- response parameters. If the response was an error, it
- displays the errors.
+  The code collects transaction parameters from the form
+  displayed by DoDirectPayment.php then constructs and sends
+  the DoDirectPayment request string to the PayPal server.
+  The paymentType variable becomes the PAYMENTACTION parameter
+  of the request string.
 
- Called by DoDirectPayment.php.
+  After the PayPal server returns the response, the code
+  displays the API request and response in the browser.
+  If the response from PayPal was a success, it displays the
+  response parameters. If the response was an error, it
+  displays the errors.
 
- Calls CallerService.php and APIError.php.
+  Called by DoDirectPayment.php.
 
- ***********************************************************/
+  Calls CallerService.php and APIError.php.
+
+ * ********************************************************* */
 
 use paypal_lib\extensions\net\http\CallerService;
 
 class DoDirectPaymentService {
+
 	protected $_config = array();
 
 	/**
@@ -85,8 +87,8 @@ class DoDirectPaymentService {
 		$paymentType = urlencode($postData['paymentType']);
 
 		/* Construct the request string that will be sent to PayPal.
-		 The variable $nvpstr contains all the variables and is a
-		 name value pair string with & as a delimiter */
+		  The variable $nvpstr contains all the variables and is a
+		  name value pair string with & as a delimiter */
 		$nvpstr = '&PAYMENTACTION=' . $paymentType;
 		$nvpstr .= '&AMT=' . $amount;
 		$nvpstr .= '&CREDITCARDTYPE=' . $creditCardType;
@@ -103,19 +105,18 @@ class DoDirectPaymentService {
 		$nvpstr .= '&CURRENCYCODE=' . $currencyCode;
 
 		/* Make the API call to PayPal, using API signature.
-		 The API response is stored in an associative array called $resArray */
+		  The API response is stored in an associative array called $resArray */
 		$resArray = $callService->hashCall('doDirectPayment', $nvpstr);
 
 		/* Display the API response back to the browser.
-		 If the response from PayPal was a success, display the response parameters'
-		 If the response was an error, display the errors received using APIError.php.
+		  If the response from PayPal was a success, display the response parameters'
+		  If the response was an error, display the errors received using APIError.php.
 		 */
 		//$ack = strtoupper($resArray["ACK"]);
-
 		// if ($ack != "SUCCESS") {
-			// $_SESSION['reshash'] = $resArray;
-			// $location = "APIError.php";
-			// header("Location: $location");
+		// $_SESSION['reshash'] = $resArray;
+		// $location = "APIError.php";
+		// header("Location: $location");
 		// }
 		//var_dump($resArray);
 		return $resArray;

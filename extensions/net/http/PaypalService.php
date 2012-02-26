@@ -49,7 +49,6 @@ class PaypalService {
 		return $ack;
 	}
 
-
 }
 
 ?>

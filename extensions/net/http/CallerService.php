@@ -11,19 +11,21 @@
  */
 
 namespace paypal_lib\extensions\net\http;
-/****************************************************
- CallerService.php
 
- This file uses the constants.php to get parameters needed
- to make an API call and calls the server.if you want use your
- own credentials, you have to change the constants.php
+/* * **************************************************
+  CallerService.php
 
- Called by TransactionDetails.php, ReviewOrder.php,
- DoDirectPaymentReceipt.php and DoExpressCheckoutPayment.php.
+  This file uses the constants.php to get parameters needed
+  to make an API call and calls the server.if you want use your
+  own credentials, you have to change the constants.php
 
- ****************************************************/
+  Called by TransactionDetails.php, ReviewOrder.php,
+  DoDirectPaymentReceipt.php and DoExpressCheckoutPayment.php.
+
+ * ************************************************** */
 
 class CallerService {
+
 	protected $_config = array();
 
 	/**
@@ -78,7 +80,7 @@ class CallerService {
 				$authMode = "FIRSTPARTY";
 			}
 		}
-		switch($authMode) {
+		switch ($authMode) {
 			case "3TOKEN":
 				$nvpHeaderStr = '&PWD=' . urlencode($this->_config['paypalApiPassword']);
 				$nvpHeaderStr .= '&USER=' . urlencode($this->_config['paypalApiUsername']);
@@ -182,7 +184,7 @@ class CallerService {
 			//position of value
 			$valuepos = strpos($nvpstr, '&') ? strpos($nvpstr, '&') : strlen($nvpstr);
 
-			/*getting the Key and Value values and storing in a Associative Array*/
+			/* getting the Key and Value values and storing in a Associative Array */
 			$keyval = substr($nvpstr, $intial, $keypos);
 			$valval = substr($nvpstr, $keypos + 1, $valuepos - $keypos - 1);
 			//decoding the respose
@@ -198,4 +200,5 @@ class CallerService {
 	}
 
 }
+
 ?>
