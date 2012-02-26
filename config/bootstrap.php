@@ -27,7 +27,10 @@
 /**
  * This file contains configurations for PayPal
  */
-require __DIR__ . '/bootstrap/paypal.php';
-
+if (file_exists(LITHIUM_APP_PATH . '/config/bootstrap/paypal.php')) {
+	require_once LITHIUM_APP_PATH . '/config/bootstrap/paypal.php';
+} else {
+	require_once __DIR__ . '/bootstrap/paypal.php';
+}
 
 ?>

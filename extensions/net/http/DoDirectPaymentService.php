@@ -3,7 +3,7 @@
 /**
  * PayPal plugin library for Li3
  *
- * @name        PAYPALSERVICE.PHP
+ * @name        DODIRECTPAYMENTSERVICE.PHP
  * @author		Gautam Sathe <gautam@hemisphereinteractive.com>
  * @package     paypal_lib
  * @copyright   Copyright (c) 2012, Gautam Sathe

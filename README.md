@@ -19,19 +19,22 @@ git submodule update
 Libraries::add('paypal_lib');
 ```
 
-* Indicate at the top of the class or php file where you want to use the plugin
+* by default the configuration files contains PayPal API Signature for making API calls to the PayPal sandbox.
+To override the default configuration create config/bootstrap/paypal.php similar to [paypal_lib/config/bootstrap/paypal.php](https://github.com/matuag/paypal_lib/blob/master/config/bootstrap/paypal.php)
+
+* indicate at the top of the class or php file where you want to use the plugin
 
 ```php
 use paypal_lib\extensions\net\http\PaypalService;
 ```
 
-* Create an instance of class PaypalService
+* create an instance of class PaypalService
 
 ```php
 $paypalService = new PaypalService();
 ```
 
-* At present only DoDirectPaymentService is supported
+* at present only DoDirectPaymentService is supported
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'doDirectPayment');
