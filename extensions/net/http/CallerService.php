@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * PayPal plugin library for Li3
+ *
+ * @name        CALLERSERVICE.PHP
+ * @author		Gautam Sathe <gautam@hemisphereinteractive.com>
+ * @package     paypal_lib
+ * @copyright   Copyright (c) 2012, Gautam Sathe
+ * @license		http://opensource.org/licenses/bsd-license.php The BSD License
+ */
+
 namespace paypal_lib\extensions\net\http;
 /****************************************************
  CallerService.php

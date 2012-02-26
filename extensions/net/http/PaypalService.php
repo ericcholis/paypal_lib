@@ -1,13 +1,23 @@
 <?php
 
+/**
+ * PayPal plugin library for Li3
+ *
+ * @name        PAYPALSERVICE.PHP
+ * @author		Gautam Sathe <gautam@hemisphereinteractive.com>
+ * @package     paypal_lib
+ * @copyright   Copyright (c) 2012, Gautam Sathe
+ * @license		http://opensource.org/licenses/bsd-license.php The BSD License
+ */
+
 namespace paypal_lib\extensions\net\http;
 
 use paypal_lib\extensions\net\http\DoDirectPaymentService;
 
 class PaypalService {
-	
+
 	protected $_config = array();
-	
+
 	/**
 	 * Initializes class configuration (`$_config`), and assigns object properties using the
 	 * `_init()` method, unless otherwise specified by configuration. See below for details.
@@ -24,7 +34,7 @@ class PaypalService {
 		$defaults = array('init' => true);
 		$this->_config = $config + $defaults;
 	}
-	
+
 	public function paypalPayment($postData, $type = 'doDirectPayment') {
 		$ddps = new DoDirectPaymentService();
 		$ack = null;
@@ -39,7 +49,7 @@ class PaypalService {
 		return $ack;
 	}
 
-	
+
 }
 
 ?>
