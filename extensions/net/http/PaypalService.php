@@ -13,6 +13,7 @@
 namespace paypal_lib\extensions\net\http;
 
 use paypal_lib\extensions\net\http\DoDirectPaymentService;
+use paypal_lib\extensions\net\http\RPProfileService;
 
 class PaypalService {
 
@@ -32,10 +33,14 @@ class PaypalService {
 
 	public function paypalPayment($postData, $type = 'doDirectPayment') {
 		$ddps = new DoDirectPaymentService();
+		$rps = new RPProfileService();
 		$ack = null;
 		switch ($type) {
 			case 'doDirectPayment':
 				$ack = $ddps->directPayment($postData);
+				break;
+			case 'createRecurringPaymentsProfile':
+				$ack = $rps->createRPProfile($postData);
 				break;
 			default:
 				$ack = $ddps->directPayment($postData);
