@@ -60,7 +60,7 @@ class RPProfileService {
 		$state = urlencode($postData['state']);
 		$zip = urlencode($postData['zip']);
 		$amount = urlencode($postData['amount']);
-		$currencyCode = "USD";
+		$currencyCode = $this->_config['currencyCode'];
 
 		$profileDesc = urlencode($postData['profileDesc']);
 		$billingPeriod = urlencode($postData['billingPeriod']);
