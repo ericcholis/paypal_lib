@@ -43,10 +43,10 @@ class PaypalService {
 				$ack = $rps->createRPProfile($postData);
 				break;
 			case 'getRecurringPaymentsProfileDetails':
-				$ack = $rps->createRPProfile($postData);
+				$ack = $rps->getRPProfileDetails($postData);
 				break;
 			case 'manageRecurringPaymentsProfileStatus':
-				$ack = $rps->createRPProfile($postData);
+				$ack = $rps->manageRPProfileStatus($postData);
 				break;
 			default:
 				$ack = $ddps->directPayment($postData);
