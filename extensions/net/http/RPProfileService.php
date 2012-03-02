@@ -136,6 +136,12 @@ class RPProfileService {
 	 * This method sends a ManageRecurringPaymentsProfileStatus NVP API request
 	 * to PayPal and return the reposnse using CallerService class
 	 *
+	 * The action to be performed to the recurring payments profile.
+	 * Must be one of the following:
+	 * - Cancel – Only profiles in Active or Suspended state can be canceled.
+	 * - Suspend – Only profiles in Active state can be suspended.
+	 * - Reactivate – Only profiles in a suspended state can be reactivated.
+	 *
 	 * @access public
 	 * @param array $postData
 	 * @return array $resArray
