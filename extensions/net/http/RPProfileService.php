@@ -34,7 +34,7 @@ class RPProfileService {
 
 	/**
 	 * This method takes the paypal create recurring payment profile request
-	 * and return the reposnse using CallerService class
+	 * and return the response using CallerService class
 	 *
 	 * @access public
 	 * @param array $postData
@@ -110,7 +110,7 @@ class RPProfileService {
 
 	/**
 	 * This method sends a GetRecurringPaymentsProfileDetails NVP API
-	 * request to PayPal and return the reposnse using CallerService class
+	 * request to PayPal and return the response using CallerService class
 	 *
 	 * @access public
 	 * @param array $postData
@@ -134,7 +134,7 @@ class RPProfileService {
 
 	/**
 	 * This method sends a ManageRecurringPaymentsProfileStatus NVP API request
-	 * to PayPal and return the reposnse using CallerService class
+	 * to PayPal and return the response using CallerService class
 	 *
 	 * The action to be performed to the recurring payments profile.
 	 * Must be one of the following:
@@ -164,7 +164,3 @@ class RPProfileService {
 
 }
 ?>
-
-<?php //echo $resArray['PROFILEID'];  ?>
-
-

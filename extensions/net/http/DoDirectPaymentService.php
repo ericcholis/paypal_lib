@@ -3,7 +3,7 @@
 /**
  * PayPal plugin library for Li3
  *
- * @name        DODIRECTPAYMENTSERVICE.PHP
+ * @name        DoDirectPaymentService.php
  * @author		Gautam Sathe <gautam@hemisphereinteractive.com>
  * @package     paypal_lib
  * @copyright   Copyright (c) 2012, Gautam Sathe
@@ -46,7 +46,7 @@ class DoDirectPaymentService {
 
 	/**
 	 * This method takes the paypal direct payment request and return the
-	 * reposnse using CallerService class
+	 * response using CallerService class
 	 *
 	 * @access public
 	 * @param array $postData

@@ -3,7 +3,7 @@
 /**
  * PayPal plugin library for Li3
  *
- * @name        PAYPALSERVICE.PHP
+ * @name        PaypalService.php
  * @author		Gautam Sathe <gautam@hemisphereinteractive.com>
  * @package     paypal_lib
  * @copyright   Copyright (c) 2012, Gautam Sathe
@@ -14,6 +14,7 @@ namespace paypal_lib\extensions\net\http;
 
 use paypal_lib\extensions\net\http\DoDirectPaymentService;
 use paypal_lib\extensions\net\http\RPProfileService;
+use paypal_lib\extensions\net\http\AdminService;
 
 class PaypalService {
 
@@ -34,6 +35,7 @@ class PaypalService {
 	public function paypalPayment($postData, $type = 'doDirectPayment') {
 		$ddps = new DoDirectPaymentService();
 		$rps = new RPProfileService();
+		$as = new AdminService();
 		$ack = null;
 		switch ($type) {
 			case 'doDirectPayment':
@@ -47,6 +49,9 @@ class PaypalService {
 				break;
 			case 'manageRecurringPaymentsProfileStatus':
 				$ack = $rps->manageRPProfileStatus($postData);
+				break;
+			case 'getTransactionDetails':
+				$ack = $as->getTransactionDetails($postData);
 				break;
 			default:
 				$ack = $ddps->directPayment($postData);

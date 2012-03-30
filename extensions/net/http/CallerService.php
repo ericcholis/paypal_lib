@@ -3,7 +3,7 @@
 /**
  * PayPal plugin library for Li3
  *
- * @name        CALLERSERVICE.PHP
+ * @name        CallerService.php
  * @author		Gautam Sathe <gautam@hemisphereinteractive.com>
  * @package     paypal_lib
  * @copyright   Copyright (c) 2012, Gautam Sathe
@@ -13,7 +13,7 @@
 namespace paypal_lib\extensions\net\http;
 
 /**
- * This file uses the configration file (paypal.php) to get parameters needed
+ * This file uses the configuration file (paypal.php) to get parameters needed
  * to make an API call and calls the server.if you want use your
  * own credentials, add your own version of paypal.php in app/config/bootstrap
  *
@@ -93,10 +93,12 @@ class CallerService {
 	}
 
 	/**
-	 * hash_call: Function to perform the API call to PayPal using API signature
-	 * @methodName is name of API  method.
-	 * @nvpStr is nvp string.
-	 * returns an associtive array containing the response from the server.
+	 * This method performs the API call to PayPal using API signature
+	 * 
+	 * @access public
+	 * @param string $methodName name of API  method
+	 * @param string $nvpStr nvp string
+	 * @return array $nvpResArray associative array containing the response from the server
 	 */
 	public function hashCall($methodName, $nvpStr) {
 		// form header string
@@ -157,11 +159,13 @@ class CallerService {
 		return $nvpResArray;
 	}
 
-	/** This function will take NVPString and convert it to an Associative Array and it will decode the
-	 * response.
-	 * It is usefull to search for a particular key and displaying arrays.
-	 * @nvpstr is NVPString.
-	 * @nvpArray is Associative Array.
+	/**
+	 * This method will take NVPString and convert it to an Associative Array and it will decode the
+	 * response. It is useful to search for a particular key and displaying arrays.
+	 * 
+	 * @access private
+	 * @param string $nvpstr NVPString
+	 * @return array $nvpArray Associative Array
 	 */
 	private function _deformatNVP($nvpstr) {
 
@@ -169,7 +173,7 @@ class CallerService {
 		$nvpArray = array();
 
 		while (strlen($nvpstr)) {
-			//postion of Key
+			//position of Key
 			$keypos = strpos($nvpstr, '=');
 			//position of value
 			$valuepos = strpos($nvpstr, '&') ? strpos($nvpstr, '&') : strlen($nvpstr);
@@ -177,7 +181,7 @@ class CallerService {
 			/* getting the Key and Value values and storing in a Associative Array */
 			$keyval = substr($nvpstr, $intial, $keypos);
 			$valval = substr($nvpstr, $keypos + 1, $valuepos - $keypos - 1);
-			//decoding the respose
+			//decoding the response
 			$nvpArray[urldecode($keyval)] = urldecode($valval);
 			$nvpstr = substr($nvpstr, $valuepos + 1, strlen($nvpstr));
 		}
