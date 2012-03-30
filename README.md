@@ -36,29 +36,31 @@ $paypalService = new PaypalService();
 
 * following services are supported
 
+DirectPayment
 
-1. DirectPayment<br />
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'doDirectPayment');
 ```
-2. CreateRecurringPaymentsProfile<br />
+
+CreateRecurringPaymentsProfile
+
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'createRecurringPaymentsProfile');
 ```
 
-3. GetRecurringPaymentsProfileDetails
+GetRecurringPaymentsProfileDetails
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'getRecurringPaymentsProfileDetails');
 ```
 
-4. ManageRecurringPaymentsProfileStatus
+ManageRecurringPaymentsProfileStatus
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'manageRecurringPaymentsProfileStatus');
 ```
 
-5. GetTransactionDetails
+GetTransactionDetails
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'getTransactionDetails');
