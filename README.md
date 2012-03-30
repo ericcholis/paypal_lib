@@ -34,33 +34,33 @@ use paypal_lib\extensions\net\http\PaypalService;
 $paypalService = new PaypalService();
 ```
 
-* Following services are supported
+* following services are supported
 
-DirectPayment
+1. DirectPayment
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'doDirectPayment');
 ```
 
-CreateRecurringPaymentsProfile
+2. CreateRecurringPaymentsProfile
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'createRecurringPaymentsProfile');
 ```
 
-GetRecurringPaymentsProfileDetails
+3. GetRecurringPaymentsProfileDetails
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'getRecurringPaymentsProfileDetails');
 ```
 
-ManageRecurringPaymentsProfileStatus
+4. ManageRecurringPaymentsProfileStatus
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'manageRecurringPaymentsProfileStatus');
 ```
 
-GetTransactionDetails
+5. GetTransactionDetails
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'getTransactionDetails');
