@@ -36,7 +36,7 @@ $paypalService = new PaypalService();
 
 * following services are supported
 
-1. DirectPayment
+> 1\. DirectPayment
 
 ```php
 $resArray = $paypalService->paypalPayment($postData, 'doDirectPayment');
