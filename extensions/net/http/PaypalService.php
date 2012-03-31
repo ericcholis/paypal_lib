@@ -12,7 +12,7 @@
 
 namespace paypal_lib\extensions\net\http;
 
-use paypal_lib\extensions\net\http\DoDirectPaymentService;
+use paypal_lib\extensions\net\http\DirectPaymentService;
 use paypal_lib\extensions\net\http\RPProfileService;
 use paypal_lib\extensions\net\http\AdminService;
 
@@ -33,7 +33,7 @@ class PaypalService {
 	}
 
 	public function paypalPayment($postData, $type = 'doDirectPayment') {
-		$ddps = new DoDirectPaymentService();
+		$ddps = new DirectPaymentService();
 		$rps = new RPProfileService();
 		$as = new AdminService();
 		$ack = null;

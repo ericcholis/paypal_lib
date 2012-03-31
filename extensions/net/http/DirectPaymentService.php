@@ -26,7 +26,7 @@ namespace paypal_lib\extensions\net\http;
 
 use paypal_lib\extensions\net\http\CallerService;
 
-class DoDirectPaymentService {
+class DirectPaymentService {
 
 	protected $_config = array();
 
