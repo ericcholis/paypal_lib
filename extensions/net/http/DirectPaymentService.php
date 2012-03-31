@@ -21,7 +21,7 @@ namespace paypal_lib\extensions\net\http;
  * the DoDirectPayment request string to the PayPal server.
  * The paymentType variable becomes the PAYMENTACTION parameter
  * of the request string.
- * 
+ *
  */
 
 use paypal_lib\extensions\net\http\CallerService;
@@ -73,10 +73,32 @@ class DirectPaymentService {
 		$state = urlencode($postData['state']);
 		$zip = urlencode($postData['zip']);
 		$amount = urlencode($postData['amount']);
-		//$currencyCode=urlencode($_POST['currency']);
 		$currencyCode = $this->_config['currencyCode'];
+		$countryCode = isset($postData['countryCode']) ? urlencode($postData['countryCode']) : 'US';
 		$paymentType = urlencode($postData['paymentType']);
 
+		$startDateMonth = null;
+		$startDateYear = null;
+
+		//3D Secure fields
+		$eciFlag = null;
+		$cavv = null;
+		$xid = null;
+		$enrolled = null;
+		$pAResStatus = null;
+
+		if (isset($postData['3D-Secure']) && $postData['3D-Secure'] === true) {
+			$startDateMonth = urlencode($postData['startDateMonth']);
+			$padStartDateMonth = str_pad($startDateMonth, 2, '0', STR_PAD_LEFT);
+			$startDateYear = urlencode($postData['startDateYear']);
+			//3D Secure fields
+			$eciFlag = urlencode($postData['eciFlag']);
+			$cavv = urlencode($postData['cavv']);
+			$xid = urlencode($postData['xid']);
+			$enrolled = urlencode($postData['enrolled']);
+			$pAResStatus = urlencode($postData['pAResStatus']);
+
+		}
 		// Construct the request string that will be sent to PayPal.
 		// The variable $nvpstr contains all the variables and is a
 		// name value pair string with & as a delimiter
@@ -92,8 +114,17 @@ class DirectPaymentService {
 		$nvpstr .= '&CITY=' . $city;
 		$nvpstr .= '&STATE=' . $state;
 		$nvpstr .= '&ZIP=' . $zip;
-		$nvpstr .= '&COUNTRYCODE=US';
+		$nvpstr .= '&COUNTRYCODE=' . $countryCode;
 		$nvpstr .= '&CURRENCYCODE=' . $currencyCode;
+
+		if (isset($postData['3D-Secure']) && $postData['3D-Secure'] === '3D-Secure') {
+			$nvpstr .= '&STARTDATE=' . $padStartDateMonth . $startDateYear;
+			$nvpstr .= '&ECI3DS=' . $eciFlag;
+			$nvpstr .= '&CAVV=' . $cavv;
+			$nvpstr .= '&XID=' . $xid;
+			$nvpstr .= '&MPIVENDOR3DS=' . $enrolled;
+			$nvpstr .= '&AUTHSTATUS3DS=' . $pAResStatus;
+		}
 
 		// Make the API call to PayPal, using API signature.
 		// The API response is stored in an associative array called $resArray
