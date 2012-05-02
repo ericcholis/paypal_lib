@@ -60,6 +60,7 @@ class RPProfileService {
 		$state = urlencode($postData['state']);
 		$zip = urlencode($postData['zip']);
 		$amount = urlencode($postData['amount']);
+		$shippingAmt = isset($postData['shippingAmt']) ? urlencode($postData['shippingAmt']) : urlencode('0.00');
 		$currencyCode = $this->_config['currencyCode'];
 
 		$profileDesc = urlencode($postData['profileDesc']);
@@ -82,6 +83,7 @@ class RPProfileService {
 		// The variable $nvpstr contains all the variables and is a
 		// name value pair string with & as a delimiter
 		$nvpstr = '&AMT=' . $amount;
+		$nvpstr .= '&SHIPPINGAMT=' . $shippingAmt;
 		$nvpstr .= '&CREDITCARDTYPE=' . $creditCardType;
 		$nvpstr .= '&ACCT=' . $creditCardNumber;
 		$nvpstr .= '&EXPDATE=' . $padDateMonth . $expDateYear;
